@@ -71,7 +71,13 @@ class HeadNews extends StatelessWidget {
                             )
                           ],
                         ),
-                        Row(),
+                        Row(
+                          children: [
+                            Column(
+
+                            )
+                          ],
+                        ),
                         Row(),
                       ],
                     ),

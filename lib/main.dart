@@ -47,7 +47,7 @@ class App extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
-                    child: const Text('Зарегестрироваться', style: TextStyle(color: Colors.white,fontSize: 17),),
+                    child: const Text('Зарегестрироватьсяs', style: TextStyle(color: Colors.white,fontSize: 17),),
                   ),
                   const SizedBox(
                     height: 40,
