@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sun_project/menu/news/head.dart';
+import 'package:sun_project/menu/profile/profile.dart';
 
 class MenuMain extends StatefulWidget {
   const MenuMain({Key? key}) : super(key: key);
@@ -24,10 +25,7 @@ class _MenuMainState extends State<MenuMain> {
       'Index 3: School',
 
     ),
-    Text(
-      'Index 4: School',
-
-    ),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
