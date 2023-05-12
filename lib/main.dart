@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sun_project/navigation_map/map.dart';
 
 import 'authorisation/auththorisation_mail.dart';
 
 void main() {
-  runApp(App());
+  runApp(MaterialApp(home: App(),));
 }
 
 class App extends StatelessWidget {
@@ -12,12 +13,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/mailscreen':(BuildContext context) => AuthMailScreen(),
-      },
-      home: Scaffold(
+    return 
+       Scaffold(
           body: Column(
             children: [
               SizedBox(
@@ -49,7 +46,9 @@ class App extends StatelessWidget {
                       height: 40,
                     ),
                     TextButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => NavigationMap()),);
+                      },
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(horizontal: 120,vertical: 18),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: Colors.black)),
@@ -60,8 +59,7 @@ class App extends StatelessWidget {
                 ),
               )
             ],
-          )
-      ),
-    );
+          ),
+      );
   }
 }
