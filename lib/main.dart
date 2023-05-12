@@ -7,7 +7,7 @@ import 'authorisation/auththorisation_mail.dart';
 
 void main() {
 
-  runApp(MaterialApp( home: MenuMain(),));
+  runApp(MaterialApp( home: mapHome(),));
 }
 
 class App extends StatelessWidget {
@@ -47,13 +47,19 @@ class App extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
-                    child: const Text('Зарегестрироватьсяs', style: TextStyle(color: Colors.white,fontSize: 17),),
+                    child: const Text('Зарегестрироваться', style: TextStyle(color: Colors.white,fontSize: 17),),
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                       Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => mapHome(),
+                        ),
+                      );
+                    },
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 120,vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: Colors.black)),
@@ -66,6 +72,5 @@ class App extends StatelessWidget {
           ],
         )
     );
-
   }
 }

@@ -1,52 +1,62 @@
-import 'package:flutter/material.dart';
-import 'package:sun_project/navigation_map/geolocation.dart';
-import 'settings.dart';
 import 'dart:async';
-import 'dart:io';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
-class NavigationMap extends StatefulWidget {
-  const NavigationMap({super.key});
+class GeolocationState extends State {
+  
+  Position? position;
 
   @override
-  State<NavigationMap> createState() => _NavigationMapState();
-}
- 
-class _NavigationMapState extends State<NavigationMap> {
-  late Position pos;
-  late Placemark place;
-   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
 
-    
-    LocationSettings locationOptions = const LocationSettings(accuracy: LocationAccuracy.high, distanceFilter: 1);
-
-    updateLocation(pos);
-    pos = await locationState();
-
-    List<Placemark> placemark = await placemarkFromCoordinates(pos.latitude, pos.longitude);
-    Placemark place = placemark[0];
-
-    StreamSubscription positionStream = Geolocator.getPositionStream(locationSettings: locationOptions).listen((Position position) { setState(() {
-    pos = position;
-    });});
+    final LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.best,
+      distanceFilter: 1,
+    );
+    StreamSubscription<Position> positionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
+    (position) {
+        print(position == null ? 'Unknown' : '${position.latitude.toString()}, ${position.longitude.toString()}');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return 
-      Scaffold(
-        body:
-        Center(
-          child:
-            Text(
-              'Latitude: ${pos != null ? pos.latitude.toString() : '0'},'
-              'Longitude: ${pos != null ? pos.longitude.toString() : '0'}'
-          )
+    return Container(
+      child: Stack(children: [
+        Row(children: [
+
+        ],),
+        FlutterMap(
+          options: MapOptions(
+              center: position != null ? LatLng(position!.latitude, position!.longitude) : LatLng(59.9342802, 30.3350986),
+              zoom: 8,
+          ),
+          children: [
+            TileLayer(
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+            ),
+            MarkerLayer(
+              markers: [
+                Marker(
+                  point: position != null ? LatLng(position!.latitude, position!.longitude) : LatLng(59.9342802, 30.3350986),
+                  width: 15,
+                  height: 15, 
+                  builder: ((context) => Icon(Icons.people))
+                )
+              ],
+            )
+          ],
         )
-      );
+      ]),
+    );
   }
+}
+
+class mapHome extends StatefulWidget {
+  @override
+  GeolocationState createState() => new GeolocationState();
 }
