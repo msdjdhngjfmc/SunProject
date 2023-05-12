@@ -65,6 +65,7 @@ class HeadNews extends StatelessWidget {
                         Row(
                           children: [
                             Container(
+                              padding: EdgeInsets.only(left: 15,bottom:20),
                               width: 300,
                               child: Text('У нас открылась новя точка! Приходите на наше мероприятие в честь открытия в 19:00',style: TextStyle(color: Colors.black,fontSize: 12,),),
                             )

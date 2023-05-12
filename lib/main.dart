@@ -58,22 +58,6 @@ class App extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 120,vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: Colors.black)),
                     ),
-                    TextButton(
-                      onPressed: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context) => NavigationMap()),);
-                      },
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 120,vertical: 18),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: Colors.black)),
-                      ),
-                      child: const Text('Войти', style: TextStyle(color: Color(0xFF187B97),fontSize: 17),),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-      );
                     child: const Text('Войти', style: TextStyle(color: Color(0xFF187B97),fontSize: 17),),
                   ),
                 ],
