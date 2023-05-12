@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sun_project/navigation_map/map.dart';
+import 'package:sun_project/map/geolocation.dart';
 import 'package:sun_project/menu/menu_main.dart';
 
 
@@ -7,7 +7,7 @@ import 'authorisation/auththorisation_mail.dart';
 
 void main() {
 
-  runApp(MaterialApp( home: mapHome(),));
+  runApp(MaterialApp( home: MyApp(),));
 }
 
 class App extends StatelessWidget {
@@ -51,20 +51,6 @@ class App extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 40,
-                  ),
-                  TextButton(
-                    onPressed: (){
-                       Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => mapHome(),
-                        ),
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 120,vertical: 18),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),side: BorderSide(color: Colors.black)),
-                    ),
-                    child: const Text('Войти', style: TextStyle(color: Color(0xFF187B97),fontSize: 17),),
                   ),
                 ],
               ),
