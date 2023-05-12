@@ -6,44 +6,33 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
-  Future<Position> _determinePosition() async {
-    bool isserviceEnabled;
-    LocationPermission permission;
+Future<Object> determinePosition() async {
+  bool serviceEnabled;
+  LocationPermission permission;
 
-    isserviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!isserviceEnabled) {
-      await Geolocator.openLocationSettings();
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    return await Geolocator.getCurrentPosition();
+  // Test if location services are enabled.
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    await Geolocator.openLocationSettings();
+    return Future.error('Location services are disabled.');
   }
 
-  @override
-  Future<Position> locationState () async{
-    Position  position = await _determinePosition();
-    return(position);
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      
+      return Future.error('Location permissions are denied');
+    }
   }
   
-void updateLocation(pos) async {
-  try {
-    Position newPosition = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high).timeout(new Duration(seconds: 5));
-    Position pos = newPosition;
-  } catch (e) {
-    print('Error: ${e.toString()}');
-  }
+  if (permission == LocationPermission.deniedForever) {
+     
+    return Future.error(
+      'Location permissions are permanently denied, we cannot request permissions.');
+  } 
+
+  // When we reach here, permissions are granted and we can
+  // continue accessing the position of the device.
+  return (true);
 }
-   
