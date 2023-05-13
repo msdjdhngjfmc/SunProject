@@ -1,9 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:stomp_dart_client/stomp.dart';
+import 'package:stomp_dart_client/stomp_config.dart';
+import 'package:stomp_dart_client/stomp_frame.dart';
 import 'package:sun_project/map/map_screen.dart';
 import 'package:sun_project/menu/booking/booking_buy.dart';
 import 'package:sun_project/menu/chat/chat_menu.dart';
 import 'package:sun_project/menu/news/head.dart';
 import 'package:sun_project/menu/profile/profile.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+final channel = WebSocketChannel.connect(
+  Uri.parse('ws://192.168.1.53:8080/websocket'),
+);
+
 
 class MenuMain extends StatefulWidget {
   const MenuMain({Key? key}) : super(key: key);
@@ -13,6 +24,9 @@ class MenuMain extends StatefulWidget {
 }
 
 class _MenuMainState extends State<MenuMain> {
+  late StompClient stompClient;
+
+  String message = '';
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HeadNews(),
@@ -22,14 +36,19 @@ class _MenuMainState extends State<MenuMain> {
     Profile(),
   ];
 
+
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    channel.sink.add('Hello!');
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
