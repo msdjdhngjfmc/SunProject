@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
-class MyApp extends StatelessWidget {
+class GeolocationAndMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Map Demo',
-      home: MyHomePage(),
+      home: GeolocationAndMapCall(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class GeolocationAndMapCall extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _GeolocationAndMapCallState createState() => _GeolocationAndMapCallState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _GeolocationAndMapCallState extends State<GeolocationAndMapCall> {
   late MapController _mapController;
-  late Position _currentPosition;
+  var _currentPosition = null;
 
   @override
   void initState() {
@@ -41,41 +41,43 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlutterMap(
+      body: _currentPosition != null ? FlutterMap(
         mapController: _mapController,
         options: MapOptions(
-          center: _currentPosition == null
-              ? LatLng(51.5, -0.09) // Default position
-              : LatLng(_currentPosition.latitude, _currentPosition.longitude),
+          center: LatLng(_currentPosition.latitude, _currentPosition.longitude),
           zoom: 13.0,
         ),
         layers: [
           TileLayerOptions(
-            urlTemplate:
-            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: ['a', 'b', 'c'],
           ),
           MarkerLayerOptions(
             markers: _currentPosition == null
                 ? []
                 : [
-              Marker(
-                width: 80.0,
-                height: 80.0,
-                point: LatLng(
-                    _currentPosition.latitude, _currentPosition.longitude),
-                builder: (ctx) => Container(
-                  child: Icon(
-                    Icons.location_on,
-                    color: Colors.red,
-                    size: 50.0,
-                  ),
-                ),
-              ),
-            ],
+                    Marker(
+                      width: 80.0,
+                      height: 80.0,
+                      point: LatLng(_currentPosition.latitude,
+                          _currentPosition.longitude),
+                      builder: (ctx) => Container(
+                        child: Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                          size: 50.0,
+                        ),
+                      ),
+                    ),
+                  ],
           ),
         ],
-      ),
+      ):Center(
+        child: SpinKitDoubleBounce(
+          color: Color(0xFF35B9DE),
+          size: 80,
+           ),
+      ), 
     );
   }
 }

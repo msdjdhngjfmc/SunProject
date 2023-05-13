@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sun_project/map/map_screen.dart';
 import 'package:sun_project/menu/booking/booking_buy.dart';
 import 'package:sun_project/menu/chat/chat_menu.dart';
 import 'package:sun_project/menu/news/head.dart';
@@ -15,10 +16,7 @@ class _MenuMainState extends State<MenuMain> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HeadNews(),
-    Text(
-      'Index 1: Business',
-
-    ),
+    MapScreen(),
     ChatMenu(),
     Booking(),
     Profile(),
