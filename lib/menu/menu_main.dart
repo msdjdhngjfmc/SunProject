@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sun_project/map/map_screen.dart';
+import 'package:sun_project/menu/booking/booking_buy.dart';
+import 'package:sun_project/menu/chat/chat_menu.dart';
 import 'package:sun_project/menu/news/head.dart';
 import 'package:sun_project/menu/profile/profile.dart';
 
@@ -15,14 +17,8 @@ class _MenuMainState extends State<MenuMain> {
   static const List<Widget> _widgetOptions = <Widget>[
     HeadNews(),
     MapScreen(),
-    Text(
-      'Index 2: School',
-
-    ),
-    Text(
-      'Index 3: School',
-
-    ),
+    ChatMenu(),
+    Booking(),
     Profile(),
   ];
 
@@ -52,7 +48,7 @@ class _MenuMainState extends State<MenuMain> {
           unselectedItemColor: Color(0xFFABAAAA),
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: Color(0xFF35B9DE),
+          selectedItemColor: _selectedIndex != 2 ? Color(0xFF35B9DE) : Color(0xFF896AE2),
         ),
         body: _widgetOptions.elementAt(_selectedIndex),
       ),

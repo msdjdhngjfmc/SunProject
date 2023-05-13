@@ -6,8 +6,7 @@ import 'package:sun_project/menu/menu_main.dart';
 import 'authorisation/auththorisation_mail.dart';
 
 void main() {
-
-  runApp(const MaterialApp( home: MenuMain(),));
+  runApp(MaterialApp( home: MenuMain(),));
 }
 
 class App extends StatelessWidget {
