@@ -22,7 +22,8 @@ class ChatMenuDinamic extends StatefulWidget {
 class _ChatMenuDinamicState extends State<ChatMenuDinamic> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(child: Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -130,6 +131,6 @@ class _ChatMenuDinamicState extends State<ChatMenuDinamic> {
 
         },
       ),
-    );
+    ));
   }
 }

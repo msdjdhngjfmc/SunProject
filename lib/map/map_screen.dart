@@ -52,8 +52,8 @@ class _MapScreenState extends State<MapScreen>
             elevation: 0.0,
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
-            flexibleSpace: isMap == true ?
-                 SafeArea(
+            flexibleSpace: isMap == true
+                ? SafeArea(
                     child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -70,11 +70,17 @@ class _MapScreenState extends State<MapScreen>
                                 borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(8))),
                             //minimumSize: const Size(170, 30),
-                            backgroundColor: themeSwitcher == true ? mainThemeColorBlue : disableColor,
+                            backgroundColor: themeSwitcher == true
+                                ? mainThemeColorBlue
+                                : disableColor,
                           ),
                           child: Text(
                             'Заведения',
-                            style: TextStyle(color:  themeSwitcher == true ? Colors.white : Colors.black, fontSize: 20),
+                            style: TextStyle(
+                                color: themeSwitcher == true
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontSize: 20),
                           ),
                         ),
                       ),
@@ -94,30 +100,40 @@ class _MapScreenState extends State<MapScreen>
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(8))),
                             //minimumSize: const Size(170, 30),
-                            backgroundColor: themeSwitcher == false ? mainThemeColorPurp : disableColor,
+                            backgroundColor: themeSwitcher == false
+                                ? mainThemeColorPurp
+                                : disableColor,
                           ),
                           child: Text(
                             'Красоты',
-                            style: TextStyle(color: themeSwitcher == false ? Colors.white : Colors.black, fontSize: 20),
+                            style: TextStyle(
+                                color: themeSwitcher == false
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontSize: 20),
                           ),
                         ),
                       )
                     ],
-                  )): SafeArea(child: TabBar(
-              labelColor: Color(0xFFFF6127),
-              indicatorColor: Color(0xFFFF6127),
-              unselectedLabelColor: Colors.black,
-              controller: _controller,
-              tabs: myTabs,
-            ),),
-                  
-            bottom: isMap == true? TabBar(
-              labelColor: Color(0xFFFF6127),
-              indicatorColor: Color(0xFFFF6127),
-              unselectedLabelColor: Colors.black,
-              controller: _controller,
-              tabs: myTabs,
-            ) : null, 
+                  ))
+                : SafeArea(
+                    child: TabBar(
+                      labelColor: Color(0xFFFF6127),
+                      indicatorColor: Color(0xFFFF6127),
+                      unselectedLabelColor: Colors.black,
+                      controller: _controller,
+                      tabs: myTabs,
+                    ),
+                  ),
+            bottom: isMap == true
+                ? TabBar(
+                    labelColor: Color(0xFFFF6127),
+                    indicatorColor: Color(0xFFFF6127),
+                    unselectedLabelColor: Colors.black,
+                    controller: _controller,
+                    tabs: myTabs,
+                  )
+                : null,
           ),
           body: TabBarView(children: [
             GeolocationAndMap(),
