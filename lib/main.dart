@@ -7,7 +7,7 @@ import 'authorisation/auththorisation_mail.dart';
 
 void main() {
 
-  runApp(MaterialApp( home: MyApp(),));
+  runApp(MaterialApp( home: MenuMain(),));
 }
 
 class App extends StatelessWidget {
