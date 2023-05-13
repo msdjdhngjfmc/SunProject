@@ -280,6 +280,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   matcher:
     dependency: transitive
     description:
@@ -453,6 +460,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sockjs_client_wrapper:
+    dependency: "direct main"
+    description:
+      name: sockjs_client_wrapper
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   source_span:
     dependency: transitive
     description:
@@ -484,7 +498,14 @@ packages:
       sha256: c3c7d8edb15bee7f0f74debd4b9c5f3c2ea86766fe4178eb2a18eb30a0bdaed5
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.0"
+    version: "1.10.0"
+  stomp_dart_client:
+    dependency: "direct main"
+    description:
+      name: stomp_dart_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.4"
   story_view:
     dependency: "direct main"
     description:
@@ -621,6 +642,20 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.16"
+  w_common:
+    dependency: transitive
+    description:
+      name: w_common
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
+  web_socket_channel:
+    dependency: "direct main"
+    description:
+      name: web_socket_channel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.4.0"
   win32:
     dependency: transitive
     description:

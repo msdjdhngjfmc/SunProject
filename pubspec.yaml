@@ -42,6 +42,9 @@ dependencies:
   story_view: ^0.14.0
   google_fonts: ^4.0.4
   flutter_map_marker_popup: ^2.1.2
+  web_socket_channel: ^2.4.0
+  stomp_dart_client: ^0.4.4
+  sockjs_client_wrapper: ^1.2.0
 
 
 
