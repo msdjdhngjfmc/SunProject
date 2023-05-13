@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sun_project/map/map_screen.dart';
 import 'package:sun_project/menu/news/head.dart';
 import 'package:sun_project/menu/profile/profile.dart';
 
@@ -13,10 +14,7 @@ class _MenuMainState extends State<MenuMain> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HeadNews(),
-    Text(
-      'Index 1: Business',
-
-    ),
+    MapScreen(),
     Text(
       'Index 2: School',
 
