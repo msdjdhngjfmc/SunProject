@@ -136,7 +136,7 @@ class BookingBuy extends StatelessWidget {
                               Text('13:30-16:00',style: TextStyle(color: Color(0xFF35B9DE),fontSize: 16),)
                             ],
                           ),
-                          Image.asset('images/bahroma.png'),
+                          Image.asset('assets/images/bahroma.png'),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [

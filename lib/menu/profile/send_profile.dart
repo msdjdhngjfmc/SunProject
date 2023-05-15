@@ -38,7 +38,7 @@ class Qrcode extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  Image.asset('images/qrcode.png'),
+                  Image.asset('assets/images/qrcode.png'),
                   const SizedBox(
                     height: 20,
                   ),

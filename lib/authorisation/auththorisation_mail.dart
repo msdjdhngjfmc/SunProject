@@ -17,7 +17,7 @@ class AuthMailScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('images/asd.png', width: 100, height: 100),
+              Image.asset('assets/images/asd.png', width: 100, height: 100),
             ],
           ),
           const Text('Введите ваш email', style: TextStyle(color: Colors.black,fontSize: 16),),

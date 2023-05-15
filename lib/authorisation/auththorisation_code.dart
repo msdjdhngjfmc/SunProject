@@ -17,7 +17,7 @@ class AutorisationCode extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('images/asd.png', width: 100, height: 100),
+              Image.asset('assets/images/asd.png', width: 100, height: 100),
             ],
           ),
            Column(
